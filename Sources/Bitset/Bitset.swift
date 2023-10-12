@@ -510,6 +510,19 @@ public final class Bitset: Sequence, Equatable, CustomStringConvertible,
         return nil
     }
     
+    public func last() -> Int? {
+        var x = self.wordcount - 1
+        while x >= 0 {
+            let w = self.data[x]
+            if w != 0 {
+                let value = x * 64 + 63 - w.leadingZeroBitCount
+                return value
+            }
+            x = x &- 1
+        }
+        return nil
+    }
+    
     // checks whether the two bitsets have the same content
     public static func == (lhs: Bitset, rhs: Bitset) -> Bool {
         if lhs.wordcount > rhs.wordcount {
