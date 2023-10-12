@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		552CCD7722D1CFB90048A27E /* Bitset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552CCD7622D1CFB90048A27E /* Bitset.swift */; };
 		55B87AED22CC35CF008C6F18 /* Bitset.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B87AE322CC35CF008C6F18 /* Bitset.framework */; };
-		55B87B4422CC6F3D008C6F18 /* BitsetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B87B4322CC6F3D008C6F18 /* BitsetTests.swift */; };
+		678BF8892AD8A09B0075A0FD /* BitsetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678BF8882AD8A09B0075A0FD /* BitsetTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,7 +29,7 @@
 		55B87AE322CC35CF008C6F18 /* Bitset.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Bitset.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B87AEC22CC35CF008C6F18 /* BitsetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitsetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B87B4122CC6F25008C6F18 /* LinuxMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LinuxMain.swift; path = Tests/LinuxMain.swift; sourceTree = "<group>"; };
-		55B87B4322CC6F3D008C6F18 /* BitsetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BitsetTests.swift; path = Tests/BitsetTests/BitsetTests.swift; sourceTree = SOURCE_ROOT; };
+		678BF8882AD8A09B0075A0FD /* BitsetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitsetTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,18 +100,18 @@
 			isa = PBXGroup;
 			children = (
 				55B87B4122CC6F25008C6F18 /* LinuxMain.swift */,
-				55B87B3F22CC6F06008C6F18 /* BitsetTests */,
+				678BF8872AD8A09B0075A0FD /* BitsetTests */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
 		};
-		55B87B3F22CC6F06008C6F18 /* BitsetTests */ = {
+		678BF8872AD8A09B0075A0FD /* BitsetTests */ = {
 			isa = PBXGroup;
 			children = (
-				55B87B4322CC6F3D008C6F18 /* BitsetTests.swift */,
+				678BF8882AD8A09B0075A0FD /* BitsetTests.swift */,
 			);
 			path = BitsetTests;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -230,7 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55B87B4422CC6F3D008C6F18 /* BitsetTests.swift in Sources */,
+				678BF8892AD8A09B0075A0FD /* BitsetTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
