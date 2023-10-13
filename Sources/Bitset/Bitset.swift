@@ -164,6 +164,13 @@ public final class Bitset: Sequence, Equatable, CustomStringConvertible,
         return output
     }
     
+    public func fillArray(_ inputArray: inout [Int]) {
+        inputArray.removeAll()
+        for i in self {
+            inputArray.append(i)
+        }
+    }
+    
     public typealias Element = Int
     
     // return an empty bitset
