@@ -6,7 +6,7 @@ class BitsetTests: XCTestCase {
     func testFirstBit() throws {
         let bitset = Bitset(arrayLiteral: 6,7,6,5,4,78,45,3,2,3)
         print(bitset.first())
-        print(bitset.last())
+        print(bitset.heighestWord())
         print(bitset)
     }
     

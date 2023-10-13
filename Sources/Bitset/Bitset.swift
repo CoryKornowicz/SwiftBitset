@@ -275,6 +275,37 @@ public final class Bitset: Sequence, Equatable, CustomStringConvertible,
         for i in allints { add(i) }
     }
     
+    public func addRange(start: Int, end: Int) {
+        guard start <= end, start >= 0, end >= 0 else {
+            // You might want to handle this error case differently
+            print("Invalid range")
+            return
+        }
+        
+        let startIndex = start >> 6
+        let endIndex = end >> 6
+        
+        if endIndex >= self.wordcount {
+            increaseWordCount(endIndex + 1)
+        }
+        
+        if startIndex == endIndex {
+            // The range is within a single word
+            data[startIndex] |= ((1 << (UInt64(end & 63) + 1)) - 1) ^ ((1 << UInt64(start & 63)) - 1)
+        } else {
+            // Set bits in the first word
+            data[startIndex] |= ~0 << UInt64(start & 63)
+            
+            // Set whole words to all ones for words entirely within the range
+            for index in (startIndex + 1)..<endIndex {
+                data[index] = ~0
+            }
+            
+            // Set bits in the last word
+            data[endIndex] |= (1 << (UInt64(end & 63) + 1)) - 1
+        }
+    }
+    
     // check that a value is in the bitset, all values must be non-negative
     public func contains(_ value: Int) -> Bool {
         let index = value >> 6
@@ -400,6 +431,37 @@ public final class Bitset: Sequence, Equatable, CustomStringConvertible,
         let index = value >> 6
         if index < self.wordcount {
             data[index] &= ~(1 << UInt64(value & 63))
+        }
+    }
+    
+    public func removeRange(start: Int, end: Int) {
+        guard start <= end, start >= 0, end >= 0 else {
+            // You might want to handle this error case differently
+            print("Invalid range")
+            return
+        }
+        
+        let startIndex = start >> 6
+        let endIndex = end >> 6
+        
+        if endIndex >= self.wordcount {
+            increaseWordCount(endIndex + 1)
+        }
+        
+        if startIndex == endIndex {
+            // The range is within a single word
+            data[startIndex] &= ~(((1 << (UInt64(end & 63) + 1)) - 1) ^ ((1 << UInt64(start & 63)) - 1))
+        } else {
+            // Clear bits in the first word
+            data[startIndex] &= (1 << UInt64(start & 63)) - 1
+            
+            // Set whole words to all zeros for words entirely within the range
+            for index in (startIndex + 1)..<endIndex {
+                data[index] = 0
+            }
+            
+            // Clear bits in the last word
+            data[endIndex] &= ~((1 << (UInt64(end & 63) + 1)) - 1)
         }
     }
     
