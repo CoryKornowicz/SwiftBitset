@@ -124,6 +124,23 @@ public final class Bitset: Sequence, Equatable, CustomStringConvertible,
         // TODO: shrink bitmap according to MSB
     }
     
+    /// Function to initialize bitvec from string.
+    /// - Parameter string: String of integers separated by whitespaces
+    public func initialize(fromString string: String) {
+        // Split the string into components separated by whitespace
+        let components = string.split(separator: " ")
+        
+        // Iterate over each component, converting to Int and adding to bitset
+        for component in components {
+            if let value = Int(component), value >= 0 {
+                self.add(value)
+            } else {
+                // Handle error: component is not a non-negative integer
+                print("Invalid number found: \(component)")
+            }
+        }
+    }
+    
     // store as uncompressed bitmap as a byte buffer in ascending order, with a bytes size that captures the most significant bit,
     // or an empty instance if no bits are present
     // The format is equivalent to that of an array of 64-bit unsigned integers stored
